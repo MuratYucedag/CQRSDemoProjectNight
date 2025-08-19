@@ -51,5 +51,12 @@ namespace CQRSDemoProjectNight.Controllers
             var values = await _getCategoryByIdQueryHandler.Handle(new GetCategoryByIdQuery(id));
             return View(values);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryCommand command)
+        {
+            await _updateCategoryCommandHandler.Handle(command);
+            return RedirectToAction("CategoryList");
+        }
     }
 }
